@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function UseGame(){
     const [games, setGames] = useState(() =>{
-        const storedGames = localStorage.getItem("obc-game-lib")
+        const storedGames = localStorage.getItem("game-lib")
         if(!storedGames) return []
         return JSON.parse(storedGames)
       }
@@ -13,7 +13,7 @@ export default function UseGame(){
           const game = { id , title, cover}
           setGames(states => {
             const newState =[...states, game]
-            localStorage.setItem("obc-game-lib", JSON.stringify(newState))
+            localStorage.setItem("game-lib", JSON.stringify(newState))
             return newState
           })
        }
@@ -21,7 +21,7 @@ export default function UseGame(){
         const removeGame = (id) => {
           setGames(states => {
              const newState = states.filter(game => game.id !== id)
-             localStorage.setItem("obc-game-lib" , JSON.stringify(newState))
+             localStorage.setItem("game-lib" , JSON.stringify(newState))
              return newState
           })
     
